@@ -1,4 +1,5 @@
 import telebot
+import webbrowser
 
 bot = telebot.TeleBot('1974247687:AAGe4o8naTcpLA2sTg5eL-GJVAyy54gTwlA')
 
@@ -11,6 +12,8 @@ def main(message):
 def info(message):
     bot.send_message(message.chat.id, message)
     
-    
+@bot.message_handler(commands=['browser'])
+def browser(message):
+    webbrowser.open('https://google.com')
     
 bot.polling(none_stop=True)
