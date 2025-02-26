@@ -20,7 +20,9 @@ def start(message):
     
 def on_click(message):
     if message.text.lower() == 'info':
-        bot.send_message(message.chat.id, "HH II")
+        file = open('bot.png', 'rb')
+        bot.send_photo(message.chat.id, file)
+        bot.send_message(message.chat.id, "HH II 😋")
 
 
 @bot.message_handler(commands=['start', 'main', 'hello'])
