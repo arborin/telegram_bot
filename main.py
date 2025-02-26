@@ -4,6 +4,25 @@ from telebot import types
 
 bot = telebot.TeleBot('1974247687:AAGe4o8naTcpLA2sTg5eL-GJVAyy54gTwlA')
 
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    markap = types.ReplyKeyboardMarkup()
+    btn1 = types.KeyboardButton("GO to site")
+    markap.row(btn1)
+    btn2 = types.KeyboardButton("ProductList")
+    btn3 = types.KeyboardButton("Details")
+    markap.row(btn2, btn3)
+    bot.send_message(message.chat.id, 'Hi', reply_markup=markap)
+    # this function will run after clicking on button or enter text
+    bot.register_next_step_handler(message, on_click)
+    
+    
+def on_click(message):
+    if message.text.lower() == 'info':
+        bot.send_message(message.chat.id, "HH II")
+
+
 @bot.message_handler(commands=['start', 'main', 'hello'])
 def main(message):
     bot.send_message(message.chat.id, '<b>H</b>ello!', parse_mode='html')
