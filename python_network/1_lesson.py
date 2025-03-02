@@ -8,5 +8,7 @@ ctx.verify_mode = ssl.CERT_NONE
 
 ip = "8.8.8.8"
 
+ip = input("Enter ip address: ")
+
 contents = urllib.request.urlopen(f"https://ipapi.co/{ip}/json/", context=ctx).read()
 print(contents)
